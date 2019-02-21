@@ -31,6 +31,7 @@ public class Extractor {
       File file = new File(filename);
       Scanner scanFile = new Scanner(file);
       int numPoints = Integer.parseInt(scanFile.nextLine());
+      points = new Point[numPoints];
       for (int i = 1; i <= numPoints; i++) {
          Point point = new Point(Integer.parseInt(scanFile.next()), Integer.parseInt(scanFile.next()));
          points[i - 1] = point;
@@ -53,6 +54,24 @@ public class Extractor {
     */
    public SortedSet<Line> getLinesBrute() {
       lines = new TreeSet<Line>();
+      for (int a = 0; a < points.length; a++) {
+         for (int b = 0; b < points.length; b++) {
+            for (int c = 0; c < points.length; c++) {
+               for (int d = 0; d < points.length; d++) {
+                  if (a != b && a != c && a != d && b != c && b != d && c != d) {
+                     if (points[a].slopeTo(points[b]) == points[c].slopeTo(points[d])) {
+                        Line line = new Line();
+                        line.add(points[a]);
+                        line.add(points[b]);
+                        line.add(points[c]);
+                        line.add(points[d]);
+                        lines.add(line);
+                     }
+                  }
+               }
+            }
+         }
+      }
       return lines;
    }
   

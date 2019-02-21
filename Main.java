@@ -1,3 +1,4 @@
+import java.io.FileNotFoundException;
 import java.util.Collection;
 import java.util.ArrayList;
 import java.util.Iterator;
@@ -5,7 +6,7 @@ import java.util.Iterator;
 class Main {
 
 
-            public static void main(String[] args) {
+            public static void main(String[] args) throws FileNotFoundException {
 
                 Point pt = new Point(17, 17);
                 Point pt2 = new Point(20, 19);
@@ -30,6 +31,9 @@ class Main {
                     itr.next();
                     System.out.println("Success");
                 }
+
+                Extractor ext = new Extractor("data");
+                System.out.println(ext.getLinesBrute());
 
 
             }
